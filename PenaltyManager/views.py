@@ -63,7 +63,7 @@ def login_request(request):
 			user = authenticate(username=username, password=password)
 			if user is not None:
 				login(request, user)
-				return redirect("PenaltyManager/dashboard.html")
+				return redirect("PenaltyManager:dashboard")
 			else:
 				return redirect("/")
 		else:
