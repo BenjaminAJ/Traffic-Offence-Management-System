@@ -26,6 +26,12 @@
             <div class="row">
                 <div class="col-md-8">
                 {% block content %}
+                    <h1>Login</h1>  
+                            <form method="POST">
+                                {% csrf_token %}
+                                {{ form }}
+                                <button type="submit" class='btn btn-primary'>Submit</button>
+                                </form>
                 {% endblock %}
                 </div>
             </div>

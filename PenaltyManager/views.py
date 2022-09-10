@@ -50,7 +50,7 @@ def login_page(request):
         else:
             # No backend authenticated the credentials
             print("Error")
-    return render(request, "accounts/login.html", context)
+    return render(request, "base.html", context)
 
 
 def log_out(request):
