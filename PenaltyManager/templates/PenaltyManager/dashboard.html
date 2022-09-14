@@ -30,7 +30,7 @@
                     <a href="{% url 'PenaltyManager:logout' %}"><button class="btn btn-primary" type="submit">Log out</button></a>
                 </nav>
                 <h3>Report an Offence</h3>
-                <form method="POST" action="{% url 'PenaltyManager:dashboard' %}">
+                <form method="POST" action=".">
                     {% csrf_token %}
                     <div>
                         <br>

@@ -8,7 +8,7 @@ class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
 
-class PenaltyForm(forms.ModelForm):
+class PenaltyForm(forms.ModelForm): 
 
     class Meta:
         model = Penalty

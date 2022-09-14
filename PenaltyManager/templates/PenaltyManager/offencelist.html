@@ -36,26 +36,26 @@
                     <input class="form-control mr-sm-2" type="text" placeholder="Search with offence ID">
 
                 </div>
-                {% if penalty.offence.exists %}
+                {% if object_list %}
                     <table class="table table-info mt-3">
                         <thead>
                             <tr>
                                 <th scope="col">OFFENCE ID</th>
                                 <th scope="col">OFFENCE</th>
-                                <th scope="col">OFFENCER</th>
-                                <th scope="col">REPORTER</th>
+                                <th scope="col">OFFENDER</th>
+                                <th scope="col">OFFICER</th>
                                 <th scope="col">ADDRESS</th>
                                 <th scope="col">ACTION</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for penalty in penaltys %}
+                            {% for item in object_list %}
                                 <tr>
-                                    <td>{{ penalty.penalty_id }}</td>
-                                    <td>{{penalty.type}}</td>
-                                    <td>{{penalty.driver_name}}</td>
-                                    <td>{{penalty.officer_name}}</td>
-                                    <td>{{penalty.address}}</td>
+                                    <td>{{item.penalty_id }}</td>
+                                    <td>{{item.offence}}</td>
+                                    <td>{{item.driver_name}}</td>
+                                    <td>{{item.officer_name}}</td>
+                                    <td>{{item.address}}</td>
                                     <td>
                                         <a href="/delete/{{penalty.penalty_id}}"><img src="{% static 'css/delete-svgrepo-com.svg' %}"
                                                 alt="delete"></a>
