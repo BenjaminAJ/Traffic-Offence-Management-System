@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Offence Management System</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/offencelist.css' %}">
+</head>
+
+<body>
+    {% block content %}
+        <div class="main container-fluid">
+            <div class="left">
+                <h1 class="h1 text-center pt-3 ">TRAFFIC OFFENSES</h1>
+                <ul class="text-center mt-2">
+                    <li><a href="{% url 'PenaltyManager:dashboard' %}">DASHBORD</a></li><br>
+                    <li><a href="{% url 'PenaltyManager:dashboard' %}">REPORT OFFENCE</a></li><br>
+                    <li><a href="{% url 'PenaltyManager:offencelist' %}">OFFENCE LIST</a></li><br>
+                    <li><a href="{% url 'PenaltyManager:dashboard' %}">ACCOUNT</a></li><br>
+                </ul>
+            </div>
+            <div class="right container">
+                <nav class="navbar navbar-expand-sm navbar-light bg-light">
+                    <span class="bb">Hi, {{ user.username }}</span>
+                    <a href="{% url 'PenaltyManager:logout' %}"><button class="btn btn-primary" type="submit">Log out</button></a>
+                </nav>
+                <h3>Offence Table</h3>
+                <p>Here is a list of all offences</p>
+                <div class="bar ">
+                    <p class="mt-2 me-1">Search</p>
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search with offence ID">
+
+                </div>
+                {% if penalty.offence.exists %}
+                    <table class="table table-info mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">OFFENCE ID</th>
+                                <th scope="col">OFFENCE</th>
+                                <th scope="col">OFFENCER</th>
+                                <th scope="col">REPORTER</th>
+                                <th scope="col">ADDRESS</th>
+                                <th scope="col">ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for penalty in penaltys %}
+                                <tr>
+                                    <td>{{ penalty.penalty_id }}</td>
+                                    <td>{{penalty.type}}</td>
+                                    <td>{{penalty.driver_name}}</td>
+                                    <td>{{penalty.officer_name}}</td>
+                                    <td>{{penalty.address}}</td>
+                                    <td>
+                                        <a href="/delete/{{penalty.penalty_id}}"><img src="{% static 'css/delete-svgrepo-com.svg' %}"
+                                                alt="delete"></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class='bar'>No offence recorded</p>
+                {% endif %}
+            </div>
+        </div>
+        </div>
+        </div>
+    {% endblock %}
+</body>
+
+</html>
