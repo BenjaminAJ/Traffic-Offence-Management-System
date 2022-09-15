@@ -13,6 +13,11 @@ from django.views.generic.list import ListView
 
 
 # Create your views here.
+class RecentListView(ListView):
+    model = Penalty
+    queryset = Penalty.objects.order_by('-date')[:10]
+    template_name = 'PenaltyManager/recentlist.html'  # Specify your own template name/location
+
 
 class PenaltyListView(ListView):
     model = Penalty

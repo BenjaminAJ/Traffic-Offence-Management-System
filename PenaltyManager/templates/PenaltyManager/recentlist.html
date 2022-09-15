@@ -29,37 +29,20 @@
                     <span class="bb">Hi, {{ user.username }}</span>
                     <a href="{% url 'PenaltyManager:logout' %}"><button class="btn btn-primary" type="submit">Log out</button></a>
                 </nav>
-                <h3>Offence Table</h3>
-                <p>Here is a list of all offences</p>
-                <div class="bar ">
-                    <p class="mt-2 me-1">Search</p>
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search with offence ID">
-
-                </div>
+                <h3>Latest Reported Offences</h3>
                 {% if object_list %}
                     <table class="table table-info mt-3">
                         <thead>
                             <tr>
-                                <th scope="col">OFFENCE ID</th>
                                 <th scope="col">OFFENCE</th>
-                                <th scope="col">OFFENDER</th>
-                                <th scope="col">OFFICER</th>
-                                <th scope="col">ADDRESS</th>
-                                <th scope="col">ACTION</th>
+                                <th scope="col">DATE</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for item in object_list %}
                                 <tr>
-                                    <td>{{item.penalty_id }}</td>
                                     <td>{{item.offence}}</td>
-                                    <td>{{item.driver_name}}</td>
-                                    <td>{{item.officer_name}}</td>
-                                    <td>{{item.address}}</td>
-                                    <td>
-                                        <a href="/delete/{{penalty.penalty_id}}"><img src="{% static 'css/delete-svgrepo-com.svg' %}"
-                                                alt="delete"></a>
-                                    </td>
+                                    <td>{{item.date}}</td>
                                 </tr>
                             {% endfor %}
                             </tr>
