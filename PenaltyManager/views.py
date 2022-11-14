@@ -63,7 +63,7 @@ def log_out(request):
 #     penaltys = Penalty.objects.all()  
 #     return render(request,"PenaltyManager/offencelist.html",{'penaltys':penaltys})  
 
-def destroy(request, id):  
-    penalty = Penalty.objects.get(id=id)  
+def destroy(request, pk):  
+    penalty = Penalty.objects.get(pk=pk)  
     penalty.delete()  
-    return redirect("PenaltyManager:dashboard")
+    return redirect("PenaltyManager:offencelist")
